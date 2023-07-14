@@ -47,6 +47,7 @@
 
 <script>
 import Login from "../components/general/Login.vue";
+import Vue from 'vue'
 export default {
   components: {
     Login
@@ -65,6 +66,7 @@ export default {
         to: { name: "userHome" }
       }
     ]
-  })
+  }),
+ 
 };
 </script>
