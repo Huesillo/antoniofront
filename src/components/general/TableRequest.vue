@@ -1,35 +1,31 @@
 <template>
+<section>
   <v-data-table :headers="headers" :items="items" sort-by="calories" class="elevation-1">
     <template v-slot:top>
       <v-toolbar flat>
         <v-toolbar-title>Solicitudes</v-toolbar-title>
         <v-divider class="mx-4" inset vertical></v-divider>
-        <v-dialog v-model="dialogDelete" max-width="500px">
-          <v-card>
-            <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
-              <v-btn color="blue darken-1" text @click="deleteItemConfirm">OK</v-btn>
-              <v-spacer></v-spacer>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
       </v-toolbar>
     </template>
-    <template v-slot:item.actions="{ item }">
-      <v-icon small class="mr-2" @click="editItem(item)">mdi-pencil</v-icon>
-      <v-icon small @click="deleteItem(item)">mdi-delete</v-icon>
+    <!-- <template v-slot:item.actions="{ item }"> -->
+    <template v-slot:item.actions>
+      <v-icon small class="mr-2">mdi-pencil</v-icon>
+      <v-icon small>mdi-delete</v-icon>
     </template>
     <template v-slot:no-data>
       <v-btn color="primary" @click="initialize">Reset</v-btn>
     </template>
   </v-data-table>
+  <br>
+  <request :reloadData="initialize"/>
+</section>
 </template>
 <script>
 import Vue from 'vue'
+import Request from '@/components/general/Request'
 
 export default {
+  components:{Request},
   data: () => ({
     dialog: false,
     dialogDelete: false,
@@ -40,29 +36,16 @@ export default {
         sortable: false,
         value: "nombre"
       },
-      { text: "Rut", value: "rut" },
-      { text: "Dirección", value: "address" },
-      { text: "Contraseña", value: "password" },
-      { text: "Correo", value: "correo" },
-      { text: "N° Contacto", value: "n_contacto" },
-      { text: "Actions", value: "actions", sortable: false }
+      { text: "Teléfono", value: "telefono" },
+      { text: "Dirección", value: "telefono" },
+      { text: "Fecha ", value: "date" },
+      { text: "Necesita pilas", value: "pilas" },
+      { text: "Tipo de solicitud", value: "requestType.nombre" },
+      { text: "Tipo de Evento", value: "eventType.nombre" },
+      { text: "Corporeo", value: "corporeo.nombre" },
     ],
     items: [],
-    defaultItem: {
-      name: "",
-      calories: 0,
-      fat: 0,
-      carbs: 0,
-      protein: 0
-    }
   }),
-
-  computed: {
-    formTitle() {
-      return this.editedIndex === -1 ? "New Item" : "Edit Item";
-    }
-  },
-
   watch: {
     dialog(val) {
       val || this.close();
@@ -71,7 +54,6 @@ export default {
       val || this.closeDelete();
     }
   },
-
   created() {
     this.initialize();
   },
