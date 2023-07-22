@@ -91,11 +91,6 @@
 <script>
 import Vue from "vue";
 export default {
-  props:{
-    reloadData:{
-      required:true
-    }
-  },
   data() {
     return {
       dialog: false,
@@ -116,7 +111,7 @@ export default {
       await Vue.axios
         .post("http://localhost:3000/request", this.data)
         .then(async (response) => {
-          await this.reloadData()
+          
         });
     },
     async initialize() {

@@ -16,16 +16,12 @@
       <v-btn color="primary" @click="initialize">Reset</v-btn>
     </template>
   </v-data-table>
-  <br>
-  <request :reloadData="initialize"/>
 </section>
 </template>
 <script>
 import Vue from 'vue'
-import Request from '@/components/general/Request'
 
 export default {
-  components:{Request},
   data: () => ({
     dialog: false,
     dialogDelete: false,

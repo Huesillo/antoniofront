@@ -58,6 +58,11 @@ export default {
       {
         text: "Inicio",
         icon: "fas fa-home",
+        to: { name: "inicioHome" }
+      },
+      {
+        text: "Solicitudes",
+        icon: "fas fa-home",
         to: { name: "administratorHome" }
       },
       {

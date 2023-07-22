@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/administrator/Home.vue';
+import Inicio from '@/views/administrator/Inicio.vue'
 import {routes as Administrator} from './administrator'
 Vue.use(VueRouter)
 
@@ -12,8 +13,8 @@ const routes = [
   },
   {
     path: "/",
-    name: "administrator",
-    component: Home,
+    name: "home",
+    component: Inicio,
   },
   ...Administrator,
 ]
