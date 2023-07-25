@@ -28,7 +28,7 @@
         @click="drawer = drawer == true ? false : true"
       ></v-app-bar-nav-icon>
       <v-toolbar-title class="white--text font-weight-bold">
-        <v-icon dark>fa-feather-alt</v-icon>PROYECTO Toño
+        <v-icon dark>fa-feather-alt</v-icon>PROYECTO Mona Inflable Disfraces
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-title class="white--text">
